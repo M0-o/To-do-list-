@@ -15,5 +15,4 @@ function createAndSaveTask( enteredTask , timeDue= -1 ){
 }
 
 
-
-console.log(task);
+module.exports = {createAndSaveTask}
