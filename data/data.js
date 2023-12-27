@@ -12,7 +12,18 @@ function createAndSaveTask( enteredTask , timeDue= -1 ){
         toDo : enteredTask ,
         dueIn : timeDue
     })
+    task.save()
+    .then(((doc)=>console.log(doc)))
+    .catch((err)=>console.log(err));
+    return task ;
 }
+
+function deleteTask(taskId ){
+    Task.findByIdAndDelete(taskId);
+
+}
+
+
 
 
 module.exports = {createAndSaveTask}
