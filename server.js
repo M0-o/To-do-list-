@@ -15,13 +15,17 @@ app.use(express.json());
 
 
 
-app.listen( 3000 , 
-     console.log("app listening on port 3000")
-
-);
+app.listen( 3000 ,  console.log("app listening on port 3000"));
 
 app.get("/", (req,res)=>{
     res.sendFile(__dirname + "/views/index.html");
+})
+
+app.get("/todos" , async (req,res)=>{
+
+    const tasks = await dbFunctions.Task.find() ;
+    res.json(tasks);
+
 })
 
 app.post("/add", async (req , res)=>{
@@ -31,7 +35,11 @@ app.post("/add", async (req , res)=>{
 
 } )
 
-/*app.delete("/delete" , (req,res)=>{
+app.delete("/delete/:id" , async (req,res)=>{
+
+    const result = await dbFunctions.deleteTask(req.params.id);
+    res.json(result);
+    
+})
 
 
-})*/

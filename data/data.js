@@ -26,4 +26,6 @@ function deleteTask(taskId ){
 
 
 
-module.exports = {createAndSaveTask}
+
+
+module.exports = {createAndSaveTask , deleteTask , Task }

@@ -6,3 +6,6 @@
  {
     "text": "wash the dishes "
  }
+
+ GET http://localhost:3000/todos 
+ 
