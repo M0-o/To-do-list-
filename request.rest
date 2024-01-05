@@ -1,0 +1,22 @@
+
+
+
+GET http://localhost:3000/todos 
+
+DELETE http://localhost:3000/delete/65971b77811b2a2054201993
+
+
+
+
+
+POST http://localhost:3000/add 
+Content-type: application/json 
+
+{
+    "task": "clean your idk"
+}
+
+
+
+
+

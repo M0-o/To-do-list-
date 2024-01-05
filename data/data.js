@@ -1,16 +1,14 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-    toDo : String ,
-    dueIn : Number 
+    toDo : String 
 });
 
 const Task = new mongoose.model('Task', taskSchema );
 
-function createAndSaveTask( enteredTask , timeDue= -1 ){
+function createAndSaveTask( enteredTask ){
     const task = new Task({
-        toDo : enteredTask ,
-        dueIn : timeDue
+        toDo : enteredTask 
     })
     task.save()
     .then(((doc)=>console.log(doc)))
@@ -18,8 +16,11 @@ function createAndSaveTask( enteredTask , timeDue= -1 ){
     return task ;
 }
 
-function deleteTask(taskId ){
-    Task.findByIdAndDelete(taskId);
+async function deleteTask(taskId){
+
+    let newContent = await Task.findByIdAndDelete(taskId);
+
+    return newContent ;
 
 }
 

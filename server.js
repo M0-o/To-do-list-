@@ -9,10 +9,9 @@ mongoose.connect(process.env.MONGO_URI )
 .catch((err)=>console.log(err));
 
 const app = express();
+
 app.use(express.static(__dirname + "/views")) ;
 app.use(express.json());
-
-
 
 
 app.listen( 3000 ,  console.log("app listening on port 3000"));
@@ -30,16 +29,16 @@ app.get("/todos" , async (req,res)=>{
 
 app.post("/add", async (req , res)=>{
 
-    let task = await dbFunctions.createAndSaveTask("clean the dishes" , 30);
+    let task = await dbFunctions.createAndSaveTask( req.body.task );
     res.json(task);
+    console.log(task) ;
 
 } )
 
-app.delete("/delete/:id" , async (req,res)=>{
+app.delete("/delete/:id" , async  (req,res)=>{
 
     const result = await dbFunctions.deleteTask(req.params.id);
     res.json(result);
-    
 })
 
 
